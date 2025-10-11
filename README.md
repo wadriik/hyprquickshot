@@ -65,5 +65,6 @@ bind = $mainMod+SHIFT, A, exec, quickshell -c screenshot -n
 
 - [ ] Speed up grim by supplying the geometry of the selected monitor
 - [ ] Add more animations and improve UI/UX
+- [ ] Optimize shader (remove branching and add AA)
 - [ ] Eliminate some dependencies
 - [ ] Rewrite in Rust :)
