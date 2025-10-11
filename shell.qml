@@ -94,7 +94,7 @@ FreezeScreen {
         ]
 
         screenshotProcess.running = true
-        // root.visible = false
+        root.visible = false
     }
 
     RegionSelector {
