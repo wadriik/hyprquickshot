@@ -37,7 +37,10 @@ FreezeScreen {
 
     Shortcut {
         sequence: "Escape"
-        onActivated: Qt.quit()
+        onActivated: () => {
+            Quickshell.execDetached(["rm", tempPath])
+            Qt.quit()
+        }
     }
  
     Timer {
