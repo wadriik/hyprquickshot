@@ -46,13 +46,13 @@ You can remove the `-n` if you want to allow multiple instances of HyprQuickshot
 Add this line to your `hyprland.conf` to bind HyprQuickshot to the Print Screen button on your keyboard.
 
 ```hypr
-bind = , Print, exec, quickshell -c screenshot -n
+bind = , Print, exec, quickshell -c hyprquickshot -n
 ```
 
 Or this to bind it to Meta + Shift + A
 
 ```hypr
-bind = $mainMod+SHIFT, A, exec, quickshell -c screenshot -n
+bind = $mainMod+SHIFT, A, exec, quickshell -c hyprquickshot -n
 ```
 
 ## Known issues
