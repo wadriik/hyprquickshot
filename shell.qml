@@ -34,6 +34,7 @@ FreezeScreen {
     property string tempPath
 
     property string mode: "region"
+    property bool saveToDisk: true
 
     Shortcut {
         sequence: "Escape"
@@ -76,7 +77,7 @@ FreezeScreen {
 
     }
 
-    function saveScreenshot(x, y, width, height) {
+    function processScreenshot(x, y, width, height) {
         const scale = hyprlandMonitor.scale
         const scaledX = Math.round((x + root.hyprlandMonitor.x) * scale)
         const scaledY = Math.round((y + root.hyprlandMonitor.y) * scale)
@@ -88,7 +89,7 @@ FreezeScreen {
         const now = new Date()
         const timestamp = Qt.formatDateTime(now, "yyyy-MM-dd_hh-mm-ss")
 
-        const outputPath = `${picturesDir}/screenshot-${timestamp}.png`
+        const outputPath = root.saveToDisk ? `${picturesDir}/screenshot-${timestamp}.png` : root.tempPath
 
         screenshotProcess.command = ["sh", "-c",
             `magick "${tempPath}" -crop ${scaledWidth}x${scaledHeight}+${scaledX}+${scaledY} "${outputPath}" && ` +
@@ -110,7 +111,7 @@ FreezeScreen {
         outlineThickness: 2.0
  
         onRegionSelected: (x, y, width, height) => {
-            saveScreenshot(x, y, width, height)
+            processScreenshot(x, y, width, height)
         }
     }
  
@@ -125,7 +126,7 @@ FreezeScreen {
         outlineThickness: 2.0
  
         onRegionSelected: (x, y, width, height) => {
-            saveScreenshot(x, y, width, height)
+            processScreenshot(x, y, width, height)
         }
     }
  
@@ -137,55 +138,80 @@ FreezeScreen {
         color: Qt.rgba(0.1, 0.1, 0.1, 0.8)
         radius: 12
         margin: 8
- 
-        Row {
-            id: buttonRow
-            spacing: 8
- 
-            Repeater {
-                model: [
-                    { mode: "region", icon: "region" },
-                    { mode: "window", icon: "window" },
-                    { mode: "screen", icon: "screen" }
-                ]
- 
-                Button {
-                    id: modeButton
-                    implicitWidth: 48
-                    implicitHeight: 48
 
-                    background: Rectangle {
-                        radius: 8
-                        color: {
-                            if(mode === modelData.mode) return Qt.rgba(0.3, 0.4, 0.7, 0.5)
-                            if (modeButton.hovered) return Qt.rgba(0.4, 0.4, 0.4, 0.5)
+		Row {
+			id: settingRow
+			spacing: 25
+		
+			Row {
+				id: buttonRow
+				spacing: 8
+	 
+				Repeater {
+					model: [
+						{ mode: "region", icon: "region" },
+						{ mode: "window", icon: "window" },
+						{ mode: "screen", icon: "screen" }
+					]
+	 
+					Button {
+						id: modeButton
+						implicitWidth: 48
+						implicitHeight: 48
 
-                            return Qt.rgba(0.3, 0.3, 0.35, 0.5)
-                        }
+						background: Rectangle {
+							radius: 8
+							color: {
+								if(mode === modelData.mode) return Qt.rgba(0.3, 0.4, 0.7, 0.5)
+								if (modeButton.hovered) return Qt.rgba(0.4, 0.4, 0.4, 0.5)
 
-                        Behavior on color { ColorAnimation { duration: 100 } }
-                    }
+								return Qt.rgba(0.3, 0.3, 0.35, 0.5)
+							}
 
-                    contentItem: Item {
-                        anchors.fill: parent
+							Behavior on color { ColorAnimation { duration: 100 } }
+						}
 
-                        Image {
-                            anchors.centerIn: parent
-                            width: 24
-                            height: 24
-                            source: Quickshell.shellPath(`icons/${modelData.icon}.svg`)
-                            fillMode: Image.PreserveAspectFit
-                        }
-                    }
+						contentItem: Item {
+							anchors.fill: parent
 
-                    onClicked: {
-                        root.mode = modelData.mode
-                        if (modelData.mode === "screen") {
-                            saveScreenshot(0, 0, root.targetScreen.width, root.targetScreen.height)
-                        }
-                    }
-                }
-            }
-        }
+							Image {
+								anchors.centerIn: parent
+								width: 24
+								height: 24
+								source: Quickshell.shellPath(`icons/${modelData.icon}.svg`)
+								fillMode: Image.PreserveAspectFit
+							}
+						}
+
+						onClicked: {
+							root.mode = modelData.mode
+							if (modelData.mode === "screen") {
+								processScreenshot(0, 0, root.targetScreen.width, root.targetScreen.height)
+							}
+						}
+					}
+				}
+			}
+			
+			Row {
+				id: switchRow
+				spacing: 8
+				anchors.verticalCenter: buttonRow.verticalCenter
+
+				Text {
+					text: "Save to disk"
+					color: "#ffffff"
+					font.pixelSize: 14
+					verticalAlignment: Text.AlignVCenter
+					anchors.verticalCenter: parent.verticalCenter
+				}
+
+				Switch {
+					id: saveSwitch
+					checked: root.saveToDisk
+					onCheckedChanged: root.saveToDisk = checked
+				}
+			}
+		}
     }
 }
