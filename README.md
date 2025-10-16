@@ -15,6 +15,25 @@ https://github.com/user-attachments/assets/7e3d5e3c-551a-4458-8dda-06cc3907dd92
 
 ## Installation
 
+### Nix
+
+If using flakes, add this repo to your flake inputs:
+
+```nix
+{
+  inputs = {
+    hyprquickshot = {
+      url = "github:jamdon2/hyprquickshot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+}
+```
+
+The package is available as hyprquickshot.packages.<system>.default, which can be added to your environment.systemPackages or home.packages if you use home-manager.
+
+### Arch
+
 Install dependencies with pacman:
 
 ```bash
@@ -40,6 +59,8 @@ Now you're ready to launch HyprQuickshot from your terminal, or add it to your H
 ```bash
 quickshell -c hyprquickshot -n
 ```
+
+> If you've installed package using nix flake, you should use `hyprquickshot` command instead.
 
 You can remove the `-n` if you want to allow multiple instances of HyprQuickshot to be open (like wanting to screenshot HyprQuickshot for whatever reason).
 
