@@ -30,7 +30,7 @@ If using flakes, add this repo to your flake inputs:
 }
 ```
 
-The package is available as hyprquickshot.packages.<system>.default, which can be added to your environment.systemPackages or home.packages if you use home-manager.
+The package is available as `hyprquickshot.packages.<system>.default`, which can be added to your `environment.systemPackages` or `home.packages` if you use home-manager.
 
 ### Arch
 
