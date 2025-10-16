@@ -84,7 +84,7 @@ FreezeScreen {
         const scaledWidth = Math.round(width * scale)
         const scaledHeight = Math.round(height * scale)
 
-        const picturesDir = Quickshell.env("XDG_PICTURES_DIR") || (Quickshell.env("HOME") + "/Pictures")
+        const picturesDir = Quickshell.env("HQS_DIR") || Quickshell.env("XDG_SCREENSHOTS_DIR") || Quickshell.env("XDG_PICTURES_DIR") || (Quickshell.env("HOME") + "/Pictures")
 
         const now = new Date()
         const timestamp = Qt.formatDateTime(now, "yyyy-MM-dd_hh-mm-ss")
