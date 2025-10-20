@@ -25,6 +25,14 @@ FreezeScreen {
             for (const screen of Quickshell.screens) {
                 if (screen.name === monitor.name) {
                     activeScreen = screen
+
+                    console.log(JSON.stringify(monitor.width))
+
+                    const timestamp = Date.now()
+                    const path = Quickshell.cachePath(`screenshot-${timestamp}.png`)
+                    tempPath = path
+                    Quickshell.execDetached(["grim", "-g", `${monitor.x},${monitor.y} ${monitor.width}x${monitor.height}`, path])
+                    showTimer.start()
                 }
             }
         }
@@ -54,14 +62,6 @@ FreezeScreen {
         onTriggered: root.visible = true
     }
  
-    Component.onCompleted: {
-        const timestamp = Date.now()
-        const path = Quickshell.cachePath(`screenshot-${timestamp}.png`)
-        tempPath = path
-        Quickshell.execDetached(["grim", path])
-        showTimer.start()
-    }
-
     Process {
         id: screenshotProcess
         running: false
@@ -81,8 +81,8 @@ FreezeScreen {
 
     function processScreenshot(x, y, width, height) {
         const scale = hyprlandMonitor.scale
-        const scaledX = Math.round((x + root.hyprlandMonitor.x) * scale)
-        const scaledY = Math.round((y + root.hyprlandMonitor.y) * scale)
+        const scaledX = Math.round(x * scale)
+        const scaledY = Math.round(y * scale)
         const scaledWidth = Math.round(width * scale)
         const scaledHeight = Math.round(height * scale)
 
