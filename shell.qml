@@ -26,12 +26,10 @@ FreezeScreen {
                 if (screen.name === monitor.name) {
                     activeScreen = screen
 
-                    console.log(JSON.stringify(monitor.width))
-
                     const timestamp = Date.now()
                     const path = Quickshell.cachePath(`screenshot-${timestamp}.png`)
                     tempPath = path
-                    Quickshell.execDetached(["grim", "-g", `${monitor.x},${monitor.y} ${monitor.width}x${monitor.height}`, path])
+                    Quickshell.execDetached(["grim", "-g", `${screen.x},${screen.y} ${screen.width}x${screen.height}`, path])
                     showTimer.start()
                 }
             }
