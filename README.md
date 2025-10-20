@@ -92,8 +92,6 @@ If `HQS_DIR` is not set, HyprQuickshot will try to find a suitable directory in 
 
 - If you have high resolution monitors, grim might take a few seconds to save the screenshot, and if you select any option before that, your screenshot won't be saved. This will be fixed in the next release.
 
-- Currently we take a grim screenshot of all monitors, and crop it after something is selected. While you won't see this issue just by using HyprQuickshot, this is partially what causes the previous issue, and will also be fixed in the next release.
-
 ## TODO
 
 - [x] Speed up grim by supplying the geometry of the selected monitor
