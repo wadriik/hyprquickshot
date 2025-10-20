@@ -76,6 +76,18 @@ Or this to bind it to Meta + Shift + A
 bind = $mainMod+SHIFT, A, exec, quickshell -c hyprquickshot -n
 ```
 
+## Configuration
+
+You can choose a custom screenshot folder by setting the `HQS_DIR` environment variable.
+
+If `HQS_DIR` is not set, HyprQuickshot will try to find a suitable directory in the following order:
+
+1. `$XDG_SCREENSHOTS_DIR`
+
+1. `$XDG_PICTURES_DIR`
+
+1. `$HOME/Pictures`
+
 ## Known issues
 
 - If you have high resolution monitors, grim might take a few seconds to save the screenshot, and if you select any option before that, your screenshot won't be saved. This will be fixed in the next release.
